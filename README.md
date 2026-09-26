@@ -1,21 +1,31 @@
 # Sakib Khandakar Portfolio
 
-Modern developer portfolio built with Next.js, TypeScript and Tailwind CSS.
+Next.js portfolio for software development, machine learning research, NLP and spatio-temporal modeling.
 
-## Setup
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open http://localhost:3000
+Open `http://localhost:3000`.
 
-## Before publishing
+The development server is intentionally long-running. Stop it with `Ctrl+C` when you are finished.
 
-1. Update `src/data/site.ts` with verified information.
-2. Replace placeholder GitHub, LinkedIn and email values.
-3. Add your final CV at `public/documents/cv.pdf`.
-4. Add project images and verified links.
-5. Replace the mailto contact fallback with a secure form service or backend.
-6. Run `npm run build` before deployment.
+## Production check
+
+```bash
+npm run build
+npm start
+```
+
+## Phase 4
+
+- Fixed the Next.js smooth-scroll route-transition warning with `data-scroll-behavior="smooth"`.
+- Added active-route navigation states for desktop and mobile.
+- Improved experience and education pages with timeline-style presentation.
+- Made the CV page safe when `public/documents/cv.pdf` is not present.
+- Added a lightweight custom favicon.
+- Refined footer positioning and portfolio presentation.
+- Retained the Phase 1 3D hero, Phase 2 filtering/reveal interactions, and Phase 3 research case-study work.

@@ -1,2 +1,27 @@
-import PageHeader from "@/components/PageHeader";
-export default function Robotics() { return <section className="section-space"><div className="container-shell"><PageHeader eyebrow="Robotics" title="Robotics, innovation and technical collaboration." description="A dedicated space for robotics projects, workshops, demonstrations and engineering activities."/><div className="grid gap-6 lg:grid-cols-2"><div className="panel p-7"><p className="eyebrow">Leadership</p><h2 className="mt-3 text-2xl font-semibold">President, JUST Robo Society</h2><p className="mt-4 leading-8 text-slate-400">Technical operations, robotics-focused activities, workshop support, member guidance and innovation initiatives.</p></div><div className="panel p-7"><p className="eyebrow">Highlights</p><ul className="mt-4 space-y-3 text-slate-400"><li>• Robotics and automation activities</li><li>• Technical workshop organization</li><li>• Member guidance and collaboration</li><li>• Regional International Robot Olympiad 2024</li></ul></div></div><div className="panel mt-6 p-7"><h2 className="text-2xl font-semibold">Project gallery</h2><p className="mt-3 text-slate-400">Add verified project photos, architecture diagrams, demo videos, hardware details and your specific contribution here.</p></div></div></section>; }
+import SectionHeading from "@/components/ui/SectionHeading";
+import Badge from "@/components/ui/Badge";
+
+export default function RoboticsPage() {
+  return (
+    <div className="mx-auto max-w-7xl px-5 py-20">
+      <SectionHeading eyebrow="Robotics" title="Robotics & Technical Activities" description="A concise record of robotics-related activities, workshops, competitions and technical collaboration." />
+      <div className="mt-12 grid gap-6 lg:grid-cols-2">
+        <article className="glass-card p-8">
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-600">Leadership</p>
+          <h2 className="mt-3 text-2xl font-black">JUST Robo Society</h2>
+          <p className="mt-4 leading-8 text-slate-600">Former President with experience in organizing robotics activities, technical events, workshops and member coordination.</p>
+          <div className="mt-6 flex flex-wrap gap-2"><Badge>Robotics</Badge><Badge>Event Management</Badge><Badge>Technical Collaboration</Badge></div>
+        </article>
+        <article className="glass-card p-8">
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-600">Activities</p>
+          <ul className="mt-5 space-y-3 leading-7 text-slate-600">
+            <li>• Robotics and automation activities</li>
+            <li>• Technical workshop organization</li>
+            <li>• Regional International Robot Olympiad activities</li>
+            <li>• Competition and member coordination</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  );
+}

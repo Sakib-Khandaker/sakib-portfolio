@@ -2,90 +2,85 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import {
-  Menu,
-  X,
-  Home,
-  User,
-  GraduationCap,
-  Brain,
-  FolderGit2,
-  Briefcase,
-  Code2,
-  Trophy,
-  Users,
-  FileText,
-  Mail,
-} from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { name: "Home", href: "/", icon: Home },
-  { name: "About", href: "/about", icon: User },
-  { name: "Education", href: "/education", icon: GraduationCap },
-  { name: "Research", href: "/research", icon: Brain },
-  { name: "Projects", href: "/projects", icon: FolderGit2 },
-  { name: "Experience", href: "/experience", icon: Briefcase },
-  { name: "Skills", href: "/skills", icon: Code2 },
-  { name: "Achievements", href: "/achievements", icon: Trophy },
-  { name: "Organizations", href: "/organizations", icon: Users },
-  { name: "CV", href: "/cv", icon: FileText },
-  { name: "Contact", href: "/contact", icon: Mail },
+  { name: "About", href: "/about" },
+  { name: "Research", href: "/research" },
+  { name: "Projects", href: "/projects" },
+  { name: "Experience", href: "/experience" },
+  { name: "Skills", href: "/skills" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) =>
+    pathname === href || (href !== "/about" && pathname.startsWith(`${href}/`));
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-        <Link
-          href="/"
-          onClick={() => setOpen(false)}
-          className="text-2xl font-bold tracking-tight"
-        >
+        <Link href="/" onClick={() => setOpen(false)} className="text-2xl font-black tracking-tight text-slate-950">
           Sakib<span className="text-blue-600">.</span>
         </Link>
 
-        <nav className="hidden xl:flex items-center gap-5">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm font-medium text-slate-600 transition hover:text-blue-600"
-            >
-              {item.name}
-            </Link>
-          ))}
+        <nav className="hidden items-center gap-2 lg:flex">
+          {navItems.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={active ? "page" : undefined}
+                className={`rounded-full px-3 py-2 text-sm font-semibold transition ${
+                  active
+                    ? "bg-slate-950 text-white"
+                    : "text-slate-600 hover:bg-slate-100 hover:text-slate-950"
+                }`}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
+          <Link href="/cv" className="ml-2 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-blue-700">
+            View CVs
+          </Link>
         </nav>
 
         <button
           type="button"
           onClick={() => setOpen(!open)}
-          className="rounded-lg p-2 text-slate-700 hover:bg-slate-100 xl:hidden"
-          aria-label="Toggle navigation"
+          className="rounded-xl p-2 text-slate-700 hover:bg-slate-100 lg:hidden"
+          aria-label={open ? "Close navigation" : "Open navigation"}
+          aria-expanded={open}
         >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {open && (
-        <div className="border-t border-slate-200 bg-white xl:hidden">
-          <nav className="mx-auto flex max-w-7xl flex-col px-5 py-3">
+        <div className="border-t border-slate-200 bg-white lg:hidden">
+          <nav className="mx-auto flex max-w-7xl flex-col px-5 py-4">
             {navItems.map((item) => {
-              const Icon = item.icon;
-
+              const active = isActive(item.href);
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 rounded-lg px-3 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-600"
+                  className={`rounded-xl px-3 py-3 font-medium transition ${active ? "bg-slate-950 text-white" : "text-slate-700 hover:bg-slate-50 hover:text-blue-600"}`}
                 >
-                  <Icon size={18} />
-                  <span>{item.name}</span>
+                  {item.name}
                 </Link>
               );
             })}
+            <Link href="/cv" onClick={() => setOpen(false)} className="mt-2 rounded-xl bg-blue-600 px-4 py-3 text-center font-bold text-white">
+              View CVs
+            </Link>
           </nav>
         </div>
       )}

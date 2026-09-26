@@ -14,7 +14,7 @@ export default function Footer() {
           <div>
             <p className="font-semibold text-white">Sakib Khandakar</p>
             <p className="mt-1 text-sm">
-              CSE Student · Software Developer · ML Researcher
+              Software Developer · Machine Learning Researcher
             </p>
           </div>
 

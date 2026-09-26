@@ -4,7 +4,6 @@ export type Project = {
   shortDescription: string;
   description: string;
   technologies: string[];
-  image: string;
   github?: string;
   demo?: string;
 };
@@ -26,7 +25,6 @@ export const projects: Project[] = [
       "SARIMA",
       "Machine Learning",
     ],
-    image: "/images/projects/traffic-accident.jpg",
   },
   {
     slug: "student-management-system",
@@ -36,7 +34,6 @@ export const projects: Project[] = [
     description:
       "A desktop-based student management system designed to manage academic records, attendance, performance, and related student information.",
     technologies: ["Java", "Database", "Desktop Application"],
-    image: "/images/projects/student-management.jpg",
   },
   {
     slug: "ecommerce-website",
@@ -46,7 +43,6 @@ export const projects: Project[] = [
     description:
       "An e-commerce website focused on product browsing, purchase workflows, customer interaction, and order management.",
     technologies: ["JavaScript", "HTML", "CSS", "Database", "Web Development"],
-    image: "/images/projects/ecommerce.jpg",
   },
   {
     slug: "bangla-road-accident-news-dataset",
@@ -62,6 +58,5 @@ export const projects: Project[] = [
       "Regex",
       "Data Processing",
     ],
-    image: "/images/projects/news-dataset.jpg",
   },
 ];

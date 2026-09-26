@@ -1,1 +1,0 @@
-export default function PageHeader({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) { return <div className="mb-12 max-w-3xl"><p className="eyebrow">{eyebrow}</p><h1 className="section-title">{title}</h1><p className="mt-5 text-lg leading-8 text-slate-400">{description}</p></div>; }
